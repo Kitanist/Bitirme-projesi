@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingeleton<GameManager>
 {
     public AudioClip StartMusic,NormalMusic;
     public AudioSource SourceAudio;
@@ -11,8 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject ESC;
     public GameObject SkillTree;
     public GameObject QuestUI;
+    public TextMeshProUGUI QuestTitle, QuestDesc;
     public Slider HealthBar;
     public float Health;
+    public int Gold,XP;
+    public GameEvent GoToVillageEvent;
     private void Start()
     {
         Health = 1;
@@ -50,10 +54,12 @@ public class GameManager : MonoBehaviour
     }
     public void OpenQuestUI()
     {
-        QuestUI.SetActive(true);
+        QuestUI.SetActive(true);GoToVillageEvent.Raise();
     }
     public void CloseQuestUI()
     {
         QuestUI.SetActive(false);
+        
+
     }
 }

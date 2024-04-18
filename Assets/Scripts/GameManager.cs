@@ -13,10 +13,11 @@ public class GameManager : MonoSingeleton<GameManager>
     public GameObject SkillTree;
     public GameObject QuestUI;
     public TextMeshProUGUI QuestTitle, QuestDesc;
-    public Slider HealthBar;
+    public Image HealthBar,XPBar;
     public float Health;
     public int Gold,XP;
     public GameEvent GoToVillageEvent;
+    public static int MaxXp=100, MaxHealth=100;
     private void Start()
     {
         Health = 1;
@@ -32,7 +33,8 @@ public class GameManager : MonoSingeleton<GameManager>
     }
     void Update()
     {
-        HealthBar.value = Health;
+        HealthBar.fillAmount = Health/MaxHealth;
+        XPBar.fillAmount = XP/MaxXp;
         if (Input.GetKeyDown(KeyCode.E))
         {
             Envanter.SetActive(true);

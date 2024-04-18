@@ -20,7 +20,7 @@ public class GameManager : MonoSingeleton<GameManager>
     public static int MaxXp=100, MaxHealth=100;
     private void Start()
     {
-        Health = 1;
+        Health = 100;
         SourceAudio.PlayOneShot(StartMusic);
     }
     public void StopMusic()

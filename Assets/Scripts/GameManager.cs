@@ -6,18 +6,31 @@ using TMPro;
 
 public class GameManager : MonoSingeleton<GameManager>
 {
-    public AudioClip StartMusic,NormalMusic;
+    public AudioClip StartMusic, NormalMusic;
     public AudioSource SourceAudio;
     public GameObject Envanter;
     public GameObject ESC;
     public GameObject SkillTree;
     public GameObject QuestUI;
     public TextMeshProUGUI QuestTitle, QuestDesc;
-    public Image HealthBar,XPBar;
+    public Image HealthBar, XPBar;
     public float Health;
-    public int Gold,XP;
+    public int Gold, XP;
     public GameEvent GoToVillageEvent;
-    public static int MaxXp=100, MaxHealth=100;
+    private int maxXp = 100, maxHealth = 100, Level = 1;
+    public int MaxXp
+    {
+        get { return maxXp * Level; }
+        set { value = maxXp; }
+    }
+    public int MaxHealth 
+    { get { return maxHealth; }
+        set { value = maxHealth; }
+    }
+        
+
+        
+    
     private void Start()
     {
         Health = 100;

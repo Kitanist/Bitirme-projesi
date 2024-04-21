@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
 {
-    public string HouseName;
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Transform Home, ExitHome;
+    public GameObject Player;
+    public CameraSmoother Cam;
+    
+    public void EnterHome()
     {
-        if (collision.tag == "Player")
-        {
-            SceneManager.LoadScene(HouseName);
-        }
-       
+        enumeratorHome();
+        Player.transform.position = Home.position;
     }
+    public void ExitHomes()
+    {
+        enumeratorHome();
+        Player.transform.position = ExitHome.position;
+    }
+    public IEnumerator enumeratorHome()
+    {
+        Cam.Aktif = false;
+        yield return new WaitForSeconds(1);
+        Cam.Aktif = true;
+    }
+  
 
 
 
